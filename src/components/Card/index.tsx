@@ -1,6 +1,11 @@
 import './style.css';
 
-const Card = ({ name, time }) => {
+export type CardProps = {
+  name: string;
+  time: string;
+}
+
+const Card = ({ name, time }: CardProps) => {
   return(
     <div className="card">
       <strong>{name}</strong>

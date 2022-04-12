@@ -3,14 +3,16 @@ import React, { useEffect, useState } from 'react';
 import './style.css'
 
 import Header from '../../components/Header';
-import Card from '../../components/Card';
+import Card, { CardProps } from '../../components/Card';
 
 function Home() {
-  const [studentName, setStudentName] = useState();
-  const [students, setStudents] = useState([]);
+  const [studentName, setStudentName] = useState<string>();
+  const [students, setStudents] = useState<CardProps[] | Array<CardProps>>([]);
 
   function handleAddStudent() {
-    const newStudent = {
+    if (!studentName) return;
+
+    const newStudent: CardProps = {
       name: studentName,
       time: new Date().toLocaleTimeString("pt-br", {
         hour: '2-digit',
